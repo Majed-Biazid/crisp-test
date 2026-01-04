@@ -1,62 +1,119 @@
 import { Link as RouterLink } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import {
   Container,
-  Box,
   Typography,
   Button
 } from '@mui/material';
 
+const PageContainer = styled(Container)`
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+`;
+
+const PageTitle = styled(Typography)`
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+`;
+
+const NavigationSection = styled.div`
+  margin-top: 2rem;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+`;
+
+const StyledButton = styled(Button)`
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(17, 153, 142, 0.4);
+  }
+`;
+
+const StorySection = styled.div`
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 12px;
+  border-left: 4px solid #38ef7d;
+`;
+
+const fadeIn = css`
+  animation: fadeIn 0.5s ease-in;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
 function About() {
   return (
-    <Container maxWidth="md">
-      <Typography variant="h3" component="h1" gutterBottom>
+    <PageContainer maxWidth="md" css={fadeIn}>
+      <PageTitle variant="h3" component="h1" gutterBottom>
         ℹ️ About Page
-      </Typography>
+      </PageTitle>
       <Typography variant="body1" paragraph>
         Learn more about our company and mission.
       </Typography>
 
-      <Box sx={{ mt: 4 }}>
+      <NavigationSection>
         <Typography variant="h5" component="h2" gutterBottom>
           Navigation:
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
-          <Button
+        <ButtonGroup>
+          <StyledButton
             component={RouterLink}
             to="/"
             variant="contained"
             color="primary"
           >
             Home
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/products"
             variant="contained"
             color="primary"
           >
             Products
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/about"
             variant="contained"
             color="primary"
           >
             About
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/contact"
             variant="contained"
             color="primary"
           >
             Contact
-          </Button>
-        </Box>
-      </Box>
+          </StyledButton>
+        </ButtonGroup>
+      </NavigationSection>
 
-      <Box sx={{ mt: 5 }}>
+      <StorySection>
         <Typography variant="h6" component="h3" gutterBottom>
           Our Story:
         </Typography>
@@ -65,8 +122,8 @@ function About() {
           Our mission is to ensure that customer support agents can see accurate
           navigation data when users browse through different pages.
         </Typography>
-      </Box>
-    </Container>
+      </StorySection>
+    </PageContainer>
   );
 }
 

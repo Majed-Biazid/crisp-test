@@ -1,7 +1,8 @@
 import { Link as RouterLink } from 'react-router-dom';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import {
   Container,
-  Box,
   Typography,
   Button,
   Paper,
@@ -10,57 +11,112 @@ import {
   ListItemText
 } from '@mui/material';
 
+const PageContainer = styled(Container)`
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+`;
+
+const PageTitle = styled(Typography)`
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+`;
+
+const NavigationSection = styled.div`
+  margin-top: 2rem;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+`;
+
+const StyledButton = styled(Button)`
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+`;
+
+const InstructionsCard = styled(Paper)`
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #f5f7fa 0%, #e4e8eb 100%);
+  border-radius: 12px;
+`;
+
+const fadeIn = css`
+  animation: fadeIn 0.5s ease-in;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
 function Home() {
   return (
-    <Container maxWidth="md">
-      <Typography variant="h3" component="h1" gutterBottom>
+    <PageContainer maxWidth="md" css={fadeIn}>
+      <PageTitle variant="h3" component="h1" gutterBottom>
         🏠 Home Page
-      </Typography>
+      </PageTitle>
       <Typography variant="body1" paragraph>
         This is a test app to verify Crisp route tracking in SPAs.
       </Typography>
 
-      <Box sx={{ mt: 4 }}>
+      <NavigationSection>
         <Typography variant="h5" component="h2" gutterBottom>
           Navigation:
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
-          <Button
+        <ButtonGroup>
+          <StyledButton
             component={RouterLink}
             to="/"
             variant="contained"
             color="primary"
           >
             Home
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/products"
             variant="contained"
             color="primary"
           >
             Products
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/about"
             variant="contained"
             color="primary"
           >
             About
-          </Button>
-          <Button
+          </StyledButton>
+          <StyledButton
             component={RouterLink}
             to="/contact"
             variant="contained"
             color="primary"
           >
             Contact
-          </Button>
-        </Box>
-      </Box>
+          </StyledButton>
+        </ButtonGroup>
+      </NavigationSection>
 
-      <Paper sx={{ mt: 5, p: 2.5 }} elevation={0}>
+      <InstructionsCard elevation={0}>
         <Typography variant="h6" component="h3" gutterBottom>
           Testing Instructions:
         </Typography>
@@ -78,8 +134,8 @@ function Home() {
             <ListItemText primary="Open Crisp chat and verify operators can see your navigation" />
           </ListItem>
         </List>
-      </Paper>
-    </Container>
+      </InstructionsCard>
+    </PageContainer>
   );
 }
 
