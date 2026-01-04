@@ -1,40 +1,73 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  Container,
+  Box,
+  Typography,
+  Button
+} from '@mui/material';
 
 function About() {
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>ℹ️ About Page</h1>
-      <p>Learn more about our company and mission.</p>
+    <Container maxWidth="md">
+      <Typography variant="h3" component="h1" gutterBottom>
+        ℹ️ About Page
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Learn more about our company and mission.
+      </Typography>
 
-      <div style={{ marginTop: '30px' }}>
-        <h2>Navigation:</h2>
-        <nav style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <Link to="/products" style={linkStyle}>Products</Link>
-          <Link to="/about" style={linkStyle}>About</Link>
-          <Link to="/contact" style={linkStyle}>Contact</Link>
-        </nav>
-      </div>
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Navigation:
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
+          <Button
+            component={RouterLink}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Home
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/products"
+            variant="contained"
+            color="primary"
+          >
+            Products
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/about"
+            variant="contained"
+            color="primary"
+          >
+            About
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="contained"
+            color="primary"
+          >
+            Contact
+          </Button>
+        </Box>
+      </Box>
 
-      <div style={{ marginTop: '40px' }}>
-        <h3>Our Story:</h3>
-        <p style={{ fontSize: '16px', lineHeight: '1.8' }}>
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h6" component="h3" gutterBottom>
+          Our Story:
+        </Typography>
+        <Typography variant="body1" paragraph>
           We are a company dedicated to testing Crisp integration with React SPAs.
           Our mission is to ensure that customer support agents can see accurate
           navigation data when users browse through different pages.
-        </p>
-      </div>
-    </div>
+        </Typography>
+      </Box>
+    </Container>
   );
 }
-
-const linkStyle = {
-  padding: '10px 20px',
-  background: '#007bff',
-  color: 'white',
-  textDecoration: 'none',
-  borderRadius: '5px',
-  fontSize: '16px'
-};
 
 export default About;

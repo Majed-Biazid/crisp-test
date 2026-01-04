@@ -1,41 +1,97 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  List,
+  ListItem,
+  ListItemText
+} from '@mui/material';
 
 function Products() {
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>🛍️ Products Page</h1>
-      <p>Browse our amazing products!</p>
+    <Container maxWidth="md">
+      <Typography variant="h3" component="h1" gutterBottom>
+        🛍️ Products Page
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Browse our amazing products!
+      </Typography>
 
-      <div style={{ marginTop: '30px' }}>
-        <h2>Navigation:</h2>
-        <nav style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <Link to="/products" style={linkStyle}>Products</Link>
-          <Link to="/about" style={linkStyle}>About</Link>
-          <Link to="/contact" style={linkStyle}>Contact</Link>
-        </nav>
-      </div>
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Navigation:
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
+          <Button
+            component={RouterLink}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Home
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/products"
+            variant="contained"
+            color="primary"
+          >
+            Products
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/about"
+            variant="contained"
+            color="primary"
+          >
+            About
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="contained"
+            color="primary"
+          >
+            Contact
+          </Button>
+        </Box>
+      </Box>
 
-      <div style={{ marginTop: '40px' }}>
-        <h3>Product List:</h3>
-        <ul style={{ fontSize: '18px', lineHeight: '2' }}>
-          <li>Product A - $29.99</li>
-          <li>Product B - $49.99</li>
-          <li>Product C - $79.99</li>
-          <li>Product D - $99.99</li>
-        </ul>
-      </div>
-    </div>
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h6" component="h3" gutterBottom>
+          Product List:
+        </Typography>
+        <List>
+          <ListItem>
+            <ListItemText
+              primary="Product A - $29.99"
+              primaryTypographyProps={{ fontSize: '1.125rem' }}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText
+              primary="Product B - $49.99"
+              primaryTypographyProps={{ fontSize: '1.125rem' }}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText
+              primary="Product C - $79.99"
+              primaryTypographyProps={{ fontSize: '1.125rem' }}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemText
+              primary="Product D - $99.99"
+              primaryTypographyProps={{ fontSize: '1.125rem' }}
+            />
+          </ListItem>
+        </List>
+      </Box>
+    </Container>
   );
 }
-
-const linkStyle = {
-  padding: '10px 20px',
-  background: '#007bff',
-  color: 'white',
-  textDecoration: 'none',
-  borderRadius: '5px',
-  fontSize: '16px'
-};
 
 export default Products;

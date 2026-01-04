@@ -1,41 +1,86 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  Paper,
+  List,
+  ListItem,
+  ListItemText
+} from '@mui/material';
 
 function Home() {
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>🏠 Home Page</h1>
-      <p>This is a test app to verify Crisp route tracking in SPAs.</p>
+    <Container maxWidth="md">
+      <Typography variant="h3" component="h1" gutterBottom>
+        🏠 Home Page
+      </Typography>
+      <Typography variant="body1" paragraph>
+        This is a test app to verify Crisp route tracking in SPAs.
+      </Typography>
 
-      <div style={{ marginTop: '30px' }}>
-        <h2>Navigation:</h2>
-        <nav style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <Link to="/products" style={linkStyle}>Products</Link>
-          <Link to="/about" style={linkStyle}>About</Link>
-          <Link to="/contact" style={linkStyle}>Contact</Link>
-        </nav>
-      </div>
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Navigation:
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
+          <Button
+            component={RouterLink}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Home
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/products"
+            variant="contained"
+            color="primary"
+          >
+            Products
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/about"
+            variant="contained"
+            color="primary"
+          >
+            About
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="contained"
+            color="primary"
+          >
+            Contact
+          </Button>
+        </Box>
+      </Box>
 
-      <div style={{ marginTop: '40px', padding: '20px', background: '#f0f0f0', borderRadius: '8px' }}>
-        <h3>Testing Instructions:</h3>
-        <ol>
-          <li>Open browser console to see Crisp logs</li>
-          <li>Navigate between pages using the links above</li>
-          <li>Check that Crisp session data updates on each route change</li>
-          <li>Open Crisp chat and verify operators can see your navigation</li>
-        </ol>
-      </div>
-    </div>
+      <Paper sx={{ mt: 5, p: 2.5 }} elevation={0}>
+        <Typography variant="h6" component="h3" gutterBottom>
+          Testing Instructions:
+        </Typography>
+        <List component="ol" sx={{ pl: 2 }}>
+          <ListItem sx={{ display: 'list-item', listStyleType: 'decimal' }}>
+            <ListItemText primary="Open browser console to see Crisp logs" />
+          </ListItem>
+          <ListItem sx={{ display: 'list-item', listStyleType: 'decimal' }}>
+            <ListItemText primary="Navigate between pages using the links above" />
+          </ListItem>
+          <ListItem sx={{ display: 'list-item', listStyleType: 'decimal' }}>
+            <ListItemText primary="Check that Crisp session data updates on each route change" />
+          </ListItem>
+          <ListItem sx={{ display: 'list-item', listStyleType: 'decimal' }}>
+            <ListItemText primary="Open Crisp chat and verify operators can see your navigation" />
+          </ListItem>
+        </List>
+      </Paper>
+    </Container>
   );
 }
-
-const linkStyle = {
-  padding: '10px 20px',
-  background: '#007bff',
-  color: 'white',
-  textDecoration: 'none',
-  borderRadius: '5px',
-  fontSize: '16px'
-};
 
 export default Home;

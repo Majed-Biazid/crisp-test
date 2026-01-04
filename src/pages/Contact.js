@@ -1,44 +1,102 @@
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import {
+  Container,
+  Box,
+  Typography,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Alert
+} from '@mui/material';
 
 function Contact() {
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <h1>📧 Contact Page</h1>
-      <p>Get in touch with us!</p>
+    <Container maxWidth="md">
+      <Typography variant="h3" component="h1" gutterBottom>
+        📧 Contact Page
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Get in touch with us!
+      </Typography>
 
-      <div style={{ marginTop: '30px' }}>
-        <h2>Navigation:</h2>
-        <nav style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-          <Link to="/" style={linkStyle}>Home</Link>
-          <Link to="/products" style={linkStyle}>Products</Link>
-          <Link to="/about" style={linkStyle}>About</Link>
-          <Link to="/contact" style={linkStyle}>Contact</Link>
-        </nav>
-      </div>
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Navigation:
+        </Typography>
+        <Box sx={{ display: 'flex', gap: 2.5, mt: 2.5, flexWrap: 'wrap' }}>
+          <Button
+            component={RouterLink}
+            to="/"
+            variant="contained"
+            color="primary"
+          >
+            Home
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/products"
+            variant="contained"
+            color="primary"
+          >
+            Products
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/about"
+            variant="contained"
+            color="primary"
+          >
+            About
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/contact"
+            variant="contained"
+            color="primary"
+          >
+            Contact
+          </Button>
+        </Box>
+      </Box>
 
-      <div style={{ marginTop: '40px' }}>
-        <h3>Contact Information:</h3>
-        <ul style={{ fontSize: '16px', lineHeight: '2', listStyle: 'none', padding: 0 }}>
-          <li>📧 Email: support@example.com</li>
-          <li>📱 Phone: +1 234 567 8900</li>
-          <li>🏢 Address: 123 Test Street, React City</li>
-        </ul>
+      <Box sx={{ mt: 5 }}>
+        <Typography variant="h6" component="h3" gutterBottom>
+          Contact Information:
+        </Typography>
+        <List sx={{ '& .MuiListItem-root': { py: 1 } }}>
+          <ListItem disablePadding>
+            <ListItemText
+              primary="📧 Email: support@example.com"
+              primaryTypographyProps={{ fontSize: '1rem' }}
+            />
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemText
+              primary="📱 Phone: +1 234 567 8900"
+              primaryTypographyProps={{ fontSize: '1rem' }}
+            />
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemText
+              primary="🏢 Address: 123 Test Street, React City"
+              primaryTypographyProps={{ fontSize: '1rem' }}
+            />
+          </ListItem>
+        </List>
 
-        <div style={{ marginTop: '30px', padding: '20px', background: '#e8f5e9', borderRadius: '8px' }}>
-          <p><strong>💬 Need help?</strong> Click the Crisp chat button to talk to support!</p>
-        </div>
-      </div>
-    </div>
+        <Alert
+          severity="success"
+          sx={{ mt: 4 }}
+          icon={<span style={{ fontSize: '1.25rem' }}>💬</span>}
+        >
+          <Typography variant="body2">
+            <strong>Need help?</strong> Click the Crisp chat button to talk to support!
+          </Typography>
+        </Alert>
+      </Box>
+    </Container>
   );
 }
-
-const linkStyle = {
-  padding: '10px 20px',
-  background: '#007bff',
-  color: 'white',
-  textDecoration: 'none',
-  borderRadius: '5px',
-  fontSize: '16px'
-};
 
 export default Contact;
